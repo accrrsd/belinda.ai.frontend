@@ -1,0 +1,7 @@
+/* Russo Regular */
+@font-face {
+  font-family: 'Russo';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./RussoOne-Regular.woff2') format('woff2'), url('./RussoOne-Regular.ttf') format('ttf');
+}

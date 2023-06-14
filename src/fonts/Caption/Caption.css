@@ -1,0 +1,13 @@
+/* Caption */
+@font-face {
+  font-family: 'Caption';
+  font-weight: 400;
+  font-style: normal;
+  src: url('./PTSansCaption-Regular.woff2') format('woff2'), url('./PTSansCaption-Regular.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'Caption';
+  font-weight: 700;
+  font-style: normal;
+  src: url('./PTSansCaption-Bold.woff2') format('woff2'), url('./PTSansCaption-Bold.woff2') format('ttf');
+}
