@@ -1,0 +1,36 @@
+:root {
+  /* gradients */
+  --gradient1Page: linear-gradient(143.66deg, #fd337e -1.49%, #fce942 99.22%);
+  --gradientBackground: linear-gradient(107.46deg, #ff709f 0.36%, #ffed76 100.3%);
+
+  /* buttons */
+  --strokeDef: #fffcb0;
+  --strokeAct: #ff4d5a;
+  --strokeHov: #ff9aa1;
+
+  --mainDef: #fdc74f;
+  --mainAct: #ffb30a;
+  --mainHov: #ffdd92;
+
+  /* secondary color */
+  --background: #ffffff;
+  --tooltip1: #fff5e7;
+  --tooltip2: #ffefb3;
+  --picker: #ffefb3;
+
+  /* text */
+  --text1Page: #fffcb0;
+  --textMain: #000000;
+  --textMain2: #737373;
+  --textTooltip: #949292;
+  --textButton: #ffffff;
+  --textButton2: #ff599d;
+
+  /* icons */
+  --iconsDef: #707070;
+  --iconsAct: #fe387d;
+
+  /* outline */
+  --field: #d9d9d9;
+  --brokenStroke: #ffd59b;
+}

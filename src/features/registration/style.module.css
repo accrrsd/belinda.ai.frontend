@@ -1,0 +1,17 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradientBackground);
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.content {
+  min-width: 50%;
+  min-height: 100px;
+  height: 100%;
+  margin: 54px auto;
+  background-color: var(--background);
+  border-radius: 40px;
+}
