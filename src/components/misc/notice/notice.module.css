@@ -1,0 +1,7 @@
+.wrapper {
+  padding: 12px 16px;
+  min-height: 45px;
+  color: var(--textTooltip);
+  background: var(--tooltip2);
+  border-radius: 8px;
+}

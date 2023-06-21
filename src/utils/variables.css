@@ -4,13 +4,14 @@
   --gradientBackground: linear-gradient(107.46deg, #ff709f 0.36%, #ffed76 100.3%);
 
   /* buttons */
-  --strokeDef: #fffcb0;
-  --strokeAct: #ff4d5a;
-  --strokeHov: #ff9aa1;
+  --buttonsStrokeDef: #fffcb0;
+  --buttonsStrokeAct: #ff4d5a;
+  --buttonsStrokeHov: #ff9aa1;
 
-  --mainDef: #fdc74f;
-  --mainAct: #ffb30a;
-  --mainHov: #ffdd92;
+  --buttonsMainDef: #fdc74f;
+  --buttonsMainActive: #ffb30a;
+  --buttonsMainHover: #ffdd92;
+  --buttonsMainDisabled: #d4d4d4;
 
   /* secondary color */
   --background: #ffffff;
@@ -31,6 +32,9 @@
   --iconsAct: #fe387d;
 
   /* outline */
-  --field: #d9d9d9;
-  --brokenStroke: #ffd59b;
+  --outlineField: #d9d9d9;
+  --outlineBrokenStroke: #ffd59b;
+  --outlineError: #ff7697;
+  --outlineFieldActive: #fdc74f;
+  --outlineSuccess: #a0ff95;
 }

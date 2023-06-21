@@ -1,3 +1,4 @@
+import { FieldValues, UseFormReturn } from 'react-hook-form'
 import { TDropDownItem } from '../../utils/types'
 
 export type TRegistrationFormStage1 = {
@@ -6,7 +7,7 @@ export type TRegistrationFormStage1 = {
   phone?: string
   artistName: string
   artistLink: string
-  Origin: string
+  origin: string
 }
 
 export type TRegistrationFormStage2 = {
@@ -15,11 +16,17 @@ export type TRegistrationFormStage2 = {
   genre: TDropDownItem
   trackLyricLanguage: TDropDownItem
 
-  songLyricFile: File
+  songLyrics: string
   track: File
+  trackLink: string
 }
 
 export type TRegistrationFormStage3 = {
   trackOverview: string
   similarArtist: string
+}
+
+export type TRegistrationFeatureStage<T extends FieldValues> = {
+  formHook: UseFormReturn<T, any>
+  onSubmit: (data: T) => void
 }

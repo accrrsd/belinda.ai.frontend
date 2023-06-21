@@ -1,7 +1,6 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-
   gap: 10px;
 }
 
@@ -17,32 +16,30 @@
   font-size: 20px;
 }
 
-.input {
-  color: var(--textMain);
-
-  padding: 18px 16px;
+.textArea {
+  padding: 16px;
   border: 1px solid var(--outlineField);
-  border-radius: 8px;
   outline: none;
 
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
-  max-height: 60px;
+  line-height: 24px;
+  color: var(--textMain);
+
+  min-height: 140px;
+  resize: none;
+
+  border-radius: 8px;
+  overflow-y: hidden;
 }
 
-.input::placeholder {
-  font-size: 14px;
-  color: var(--textTooltip);
-  transform: translateY(-2px);
-}
-
-.input:focus {
+.textArea:focus {
   border: 1px solid var(--outlineFieldActive);
 }
 
-.errorInput {
+.errorTextArea {
   border: 1px solid var(--outlineError);
 }
 

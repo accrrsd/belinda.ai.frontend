@@ -1,0 +1,32 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: var(--buttonsMainDef);
+  cursor: pointer;
+  user-select: none;
+  border-radius: 40px;
+}
+
+.wrapper:hover {
+  background-color: var(--buttonsMainHover);
+}
+
+.wrapper:active {
+  background-color: var(--buttonsMainActive);
+}
+
+.input:disabled .wrapper {
+  background-color: var(--buttonsMainDisabled);
+}
+
+.relative {
+  position: relative;
+}
+
+.input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
