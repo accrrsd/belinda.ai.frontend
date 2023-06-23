@@ -16,6 +16,8 @@ export default function RegistrationFeature() {
 
   const increaseStage = () => setStage((prev) => (prev + 1 > 3 ? 3 : prev + 1))
 
+  const onRegistrationComplete = (data: TRegistrationFormStage3) => localStorage.setItem('userAuthorized', 'true')
+
   const getContentByStage = () => {
     switch (stage as 1 | 2 | 3) {
       case 1:
@@ -23,7 +25,7 @@ export default function RegistrationFeature() {
       case 2:
         return <RegistrationFeatureStage2 formHook={formHookStage2} onSubmit={increaseStage} />
       case 3:
-        return <RegistrationFeatureStage3 formHook={formHookStage3} onSubmit={() => {}} />
+        return <RegistrationFeatureStage3 formHook={formHookStage3} onSubmit={onRegistrationComplete} />
     }
   }
 
