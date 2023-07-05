@@ -11,6 +11,7 @@ export default function TitlePageFeature() {
             <button className={style.chooseButton}>I release music</button>
             <button className={style.chooseButton}>I own playlist</button>
           </div>
+          <button className={style.submitButton}>Let’s begin</button>
         </div>
       </div>
       <div className={style.rightSide} />
