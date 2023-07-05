@@ -15,7 +15,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--textMain2);
+  color: var(--text-main-2);
 }
 
 .container {
@@ -29,14 +29,14 @@
 }
 
 .container:focus .upperMenu {
-  border-color: var(--outlineFieldActive);
+  border-color: var(--outline-field-active);
   border-radius: 8px 8px 0 0;
 }
 
 .upperMenu {
-  color: var(--textMain);
+  color: var(--text-main);
   padding: 20px 16px;
-  border: 1px solid var(--outlineField);
+  border: 1px solid var(--outline-field);
   border-radius: 8px;
   outline: none;
 
@@ -56,7 +56,7 @@
 }
 
 .upperMenuError {
-  border: 1px solid var(--outlineError);
+  border: 1px solid var(--outline-error);
 }
 
 .valueWrapper {
@@ -66,7 +66,7 @@
 .valueWrapperPlaceholder {
   font-size: 14px;
   line-height: 17px;
-  color: var(--textTooltip);
+  color: var(--text-tooltip);
 }
 
 .arrow {
@@ -89,7 +89,7 @@
   width: 100%;
 
   box-sizing: border-box;
-  background-color: var(--background);
+  background-color: var(--color-backgrnd);
 
   overflow-y: auto;
   border: none;
@@ -99,7 +99,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  color: var(--textTooltip);
+  color: var(--text-tooltip);
 }
 
 .options {
@@ -112,7 +112,7 @@
   left: 0;
   z-index: 100;
   composes: optionsMain;
-  border: 1px solid var(--outlineFieldActive);
+  border: 1px solid var(--outline-field-active);
   border-radius: 0 0 10px 10px;
 }
 
@@ -127,11 +127,11 @@
 }
 
 .optionSelected {
-  background-color: var(--background);
+  background-color: var(--color-backgrnd);
 }
 
 .optionHighlighted {
-  background-color: var(--picker);
+  background-color: var(--color-picker);
 }
 
 .iconsContainer {
@@ -146,5 +146,5 @@
   font-weight: 500;
   font-size: 14px;
 
-  color: var(--outlineError);
+  color: var(--outline-error);
 }

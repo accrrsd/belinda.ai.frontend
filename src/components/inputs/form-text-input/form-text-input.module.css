@@ -9,7 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--textMain2);
+  color: var(--text-main-2);
 
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-style: normal;
@@ -18,10 +18,10 @@
 }
 
 .input {
-  color: var(--textMain);
+  color: var(--text-main);
 
   padding: 18px 16px;
-  border: 1px solid var(--outlineField);
+  border: 1px solid var(--outline-field);
   border-radius: 8px;
   outline: none;
 
@@ -34,16 +34,16 @@
 
 .input::placeholder {
   font-size: 14px;
-  color: var(--textTooltip);
+  color: var(--text-tooltip);
   transform: translateY(-2px);
 }
 
 .input:focus {
-  border: 1px solid var(--outlineFieldActive);
+  border: 1px solid var(--outline-field-active);
 }
 
 .errorInput {
-  border: 1px solid var(--outlineError);
+  border: 1px solid var(--outline-error);
 }
 
 .errorMessage {
@@ -52,5 +52,5 @@
   font-weight: 500;
   font-size: 14px;
 
-  color: var(--outlineError);
+  color: var(--outline-error);
 }

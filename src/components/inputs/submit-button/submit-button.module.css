@@ -3,22 +3,22 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background-color: var(--buttonsMainDef);
+  background-color: var(--buttons-main-def);
   cursor: pointer;
   user-select: none;
   border-radius: 40px;
 }
 
 .wrapper:hover {
-  background-color: var(--buttonsMainHover);
+  background-color: var(--buttons-main-hov);
 }
 
 .wrapper:active {
-  background-color: var(--buttonsMainActive);
+  background-color: var(--buttons-main-act);
 }
 
 .input:disabled .wrapper {
-  background-color: var(--buttonsMainDisabled);
+  background-color: var(--buttons-main-disable);
 }
 
 .relative {

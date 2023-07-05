@@ -1,8 +1,8 @@
 .wrapper {
   position: relative;
   min-height: 60px;
-  background-color: var(--tooltip1);
-  border: 1px dashed var(--outlineBrokenStroke);
+  background-color: var(--color-tooltip-1);
+  border: 1px dashed var(--outline-broken-stroke);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 .wrapperHover {
-  background-color: var(--buttonsMainHover);
+  background-color: var(--buttons-main-hov);
 }
 
 .input {
@@ -21,7 +21,7 @@
 }
 
 .defaultChild {
-  color: var(--textTooltip);
+  color: var(--text-tooltip);
   display: flex;
   align-items: center;
   gap: 10px;

@@ -8,7 +8,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: var(--textMain2);
+  color: var(--text-main-2);
 
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-style: normal;
@@ -18,7 +18,7 @@
 
 .textArea {
   padding: 16px;
-  border: 1px solid var(--outlineField);
+  border: 1px solid var(--outline-field);
   outline: none;
 
   font-family: 'Inter', Arial, Helvetica, sans-serif;
@@ -26,7 +26,7 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
-  color: var(--textMain);
+  color: var(--text-main);
 
   min-height: 140px;
   resize: none;
@@ -36,11 +36,11 @@
 }
 
 .textArea:focus {
-  border: 1px solid var(--outlineFieldActive);
+  border: 1px solid var(--outline-field-active);
 }
 
 .errorTextArea {
-  border: 1px solid var(--outlineError);
+  border: 1px solid var(--outline-error);
 }
 
 .errorMessage {
@@ -49,5 +49,5 @@
   font-weight: 500;
   font-size: 14px;
 
-  color: var(--outlineError);
+  color: var(--outline-error);
 }

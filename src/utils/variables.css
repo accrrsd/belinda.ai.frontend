@@ -1,40 +1,40 @@
 :root {
   /* gradients */
-  --gradient1Page: linear-gradient(143.66deg, #fd337e -1.49%, #fce942 99.22%);
-  --gradientBackground: linear-gradient(107.46deg, #ff709f 0.36%, #ffed76 100.3%);
+  --gradient-1-page: linear-gradient(143.66deg, #fd337e -1.49%, #fce942 99.22%);
+  --gradient-backgrnd: linear-gradient(107.46deg, #ff709f 0.36%, #ffed76 100.3%);
 
   /* buttons */
-  --buttonsStrokeDef: #fffcb0;
-  --buttonsStrokeAct: #ff4d5a;
-  --buttonsStrokeHov: #ff9aa1;
+  --buttons-stroke-def: #fffcb0;
+  --buttons-stroke-act: #ff4d5a;
+  --buttons-stroke-hov: #ff9aa1;
 
-  --buttonsMainDef: #fdc74f;
-  --buttonsMainActive: #ffb30a;
-  --buttonsMainHover: #ffdd92;
-  --buttonsMainDisabled: #d4d4d4;
+  --buttons-main-def: #fdc74f;
+  --buttons-main-act: #ffb30a;
+  --buttons-main-hov: #ffdd92;
+  --buttons-main-disable: #d4d4d4;
 
   /* secondary color */
-  --background: #ffffff;
-  --tooltip1: #fff5e7;
-  --tooltip2: #ffefb3;
-  --picker: #ffefb3;
+  --color-backgrnd: #ffffff;
+  --color-tooltip-1: #fff5e7;
+  --color-tooltip-2: #ffefb3;
+  --color-picker: #ffefb3;
 
   /* text */
-  --text1Page: #fffcb0;
-  --textMain: #000000;
-  --textMain2: #737373;
-  --textTooltip: #949292;
-  --textButton: #ffffff;
-  --textButton2: #ff599d;
+  --text-1-page: #fffcb0;
+  --text-main: #000000;
+  --text-main-2: #737373;
+  --text-tooltip: #949292;
+  --text-button: #ffffff;
+  --text-button2: #ff599d;
 
   /* icons */
-  --iconsDef: #707070;
-  --iconsAct: #fe387d;
+  --icons-def: #707070;
+  --icons-act: #fe387d;
 
   /* outline */
-  --outlineField: #d9d9d9;
-  --outlineBrokenStroke: #ffd59b;
-  --outlineError: #ff7697;
-  --outlineFieldActive: #fdc74f;
-  --outlineSuccess: #a0ff95;
+  --outline-field: #d9d9d9;
+  --outline-broken-stroke: #ffd59b;
+  --outline-error: #ff7697;
+  --outline-field-active: #fdc74f;
+  --outline-success: #a0ff95;
 }

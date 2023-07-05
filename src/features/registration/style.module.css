@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gradientBackground);
+  background: var(--gradient-backgrnd);
   min-height: 100vh;
   min-width: 320px;
 }
@@ -16,7 +16,7 @@
   height: 100%;
 
   margin: 54px auto;
-  background-color: var(--background);
+  background-color: var(--color-backgrnd);
   border-radius: 40px;
   padding: 50px;
 }
@@ -39,7 +39,7 @@
 .stepWrapper {
   display: flex;
   gap: 32px;
-  color: var(--textMain);
+  color: var(--text-main);
   align-items: center;
 }
 
@@ -56,5 +56,5 @@
 .subtitle {
   font-size: 32px;
   line-height: 39px;
-  color: var(--textMain2);
+  color: var(--text-main-2);
 }
