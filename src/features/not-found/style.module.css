@@ -1,0 +1,42 @@
+.wrapper {
+    background: linear-gradient(135deg, #FF709F 0%, #FFED76 100%);
+    padding: 50px;
+    height: 100svh;
+    display: flex;
+    justify-content: center;
+    gap: 0 150px;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    color: var(--buttons-stroke-def);
+    font-family: 'Russo', sans-serif;
+    margin-bottom: 13px;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: normal;
+    letter-spacing: 9.12px;
+}
+
+.subtitle {
+    color: var(--buttons-stroke-def);
+    font-size: 48px;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 40px;
+}
+
+.button {
+    max-width: 400px;
+    gap: 0 10px;
+    color: var(--text-button);
+    font-size: 24px;
+    font-weight: 600;
+    border: 3px solid #FFF;
+}
