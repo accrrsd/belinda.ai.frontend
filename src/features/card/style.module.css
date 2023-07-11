@@ -1,0 +1,137 @@
+.wrapper {
+    padding: 125px 60px;
+    background: var(--gradient-backgrnd);
+}
+
+.container {
+    border-radius: 10px;
+    background: var(--color-backgrnd);
+    padding: 40px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0 62px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 37px 0;
+}
+
+.image {
+    max-width: 600px;
+    width: 100%;
+    border-radius: 20px;
+    height: 600px;
+}
+
+.headline {
+    display: flex;
+    flex-direction: column;
+    gap: 5px 0;
+}
+
+.type {
+    color: var(--text-main-2);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.name {
+    color: var(--text-main);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+}
+
+.about {
+    display: flex;
+    align-items: center;
+    gap: 0 6px;
+}
+
+.aboutText {
+    display: flex;
+    align-items: center;
+    gap: 0 4px;
+    color: var(--text-main-2);
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.aboutQty {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.info {
+    display: flex;
+    gap: 0 30px;
+    align-items: center;
+}
+
+.descrTitle {
+    color: var(--text-main-2);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 5px;
+}
+
+.descrText {
+    color: var(--text-main);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.listeners {
+    color: var(--text-main-2);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+}
+
+.listeners span {
+    color: var(--text-main);
+    font-size: 24px;
+    margin: 0 4px;
+}
+
+.prefer {
+    color: var(--text-main-2);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.preferTitle {
+    display: flex;
+    align-items: center;
+    gap: 0 4px;
+    margin-bottom: 14px;
+}
+
+.preferList {
+    display: flex;
+    flex-direction: column;
+    gap: 9px 0;
+    list-style: none;
+    padding-left: 31px;
+}
+
+.button {
+    margin-top: 12px;
+    color: var(--color-backgrnd);
+    font-weight: 600;
+    gap: 0 10px;
+    max-width: 250px;
+    height: 60px;
+}

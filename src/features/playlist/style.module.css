@@ -1,0 +1,146 @@
+.wrapper {
+    background: var(--gradient-backgrnd);
+    padding: 60px;
+}
+
+.container {
+    border-radius: 30px;
+    padding: 50px;
+    background-color: var(--color-backgrnd);
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    gap: 30px 0;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    gap: 60px 0;
+}
+
+.heading {
+    margin-bottom: 40px;
+}
+
+.title {
+    color: var(--text-main, #000);
+    font-size: 48px;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 30px;
+}
+
+.subtitle {
+    color: var(--text-main, #000);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 0 30px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px 0;
+    grid-column: 2 span;
+}
+
+.image {
+    border-radius: 4px;
+}
+
+.type {
+    color: var(--text-main-2);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+}
+
+.name {
+    color: var(--text-main);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.button {
+    color: var(--color-backgrnd);
+    font-weight: 600;
+}
+
+.about {
+    display: flex;
+    align-items: center;
+    gap: 0 6px;
+}
+
+.aboutText {
+    display: flex;
+    align-items: center;
+    gap: 0 4px;
+    color: var(--text-main-2);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.aboutQty {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.aboutLikes {
+    display: flex;
+    align-items: center;
+    gap: 0 11px;
+}
+
+.aboutLike {
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--text-main-2);
+    display: flex;
+    align-items: center;
+}
+
+.aboutLike, .aboutDislike {
+    cursor: pointer;
+}
+
+.tooltip {
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: var(--color-tooltip-2);
+    display: flex;
+    flex-direction: column;
+    gap: 7px 0;
+}
+
+.tooltipTitle {
+    color: var(--text-tooltip);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.tooltipText {
+    color: var(--text-tooltip);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+}
