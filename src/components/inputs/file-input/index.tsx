@@ -110,7 +110,7 @@ export const FileInput = <T extends FieldValues>({
       onDragLeave={handleDrag}
       onDragOver={handleDrag}
       onDrop={handleDrop}
-      className={`${DStyle.wrapper} ${dragActive ? DStyle.wrapperHover : ''}`}
+      className={`${DStyle.wrapper} ${dragActive ? DStyle.wrapperHover : ''} ${checkError(inputName, errors) ? DStyle.wrapperError : ''}`}
     >
       <input
         type="file"

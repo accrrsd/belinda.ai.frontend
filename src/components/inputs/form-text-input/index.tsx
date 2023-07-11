@@ -17,7 +17,7 @@ const conditions = [`'`, `"`, '`']
 const defaultRules = {
   required: 'Required',
   validate: {
-    checkSymbols: (v: string) => (conditions.some((el) => v.includes(el)) ? 'Your name must not contain ‘ or ”' : true),
+    checkSymbols: (v: string) => (conditions.some((el) => v.includes(el)) ? 'Must not contain ‘ or ”' : true),
   },
 }
 

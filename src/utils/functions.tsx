@@ -22,3 +22,7 @@ export const getFinallyRules = (rules: object, additionalRules: object | undefin
   const validateRules = { ...rules.validate, ...additionalRules.validate }
   return { ...rules, ...additionalRules, ...validateRules }
 }
+
+export const isObjectNotEmpty = (objectName: object) => {
+  return Object.keys(objectName).length > 0
+}

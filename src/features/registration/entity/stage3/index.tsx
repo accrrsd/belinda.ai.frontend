@@ -17,8 +17,8 @@ export const RegistrationFeatureStage3 = ({ formHook, onSubmit }: TRegistrationF
         <Notice>
           <span className={style.trackOverviewNotice}>Do your best, we'll help refine it</span>
         </Notice>
+        <RegistrationSubmitButton text="Complete" />
       </form>
-      <RegistrationSubmitButton text="Complete" />
     </div>
   )
 }

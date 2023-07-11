@@ -13,6 +13,12 @@
   background-color: var(--buttons-main-hov);
 }
 
+.wrapperError {
+  border-radius: 8px;
+  border: 2px dashed #ff9cb4;
+  background: #ffcad6;
+}
+
 .input {
   position: absolute;
   inset: 0;

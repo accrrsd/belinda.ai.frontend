@@ -17,8 +17,8 @@ export type TRegistrationFormStage2 = {
   trackLyricLanguage: TDropDownItem
 
   songLyrics: string
-  track: File
-  trackLink: string
+  track?: File
+  trackLink?: string
 }
 
 export type TRegistrationFormStage3 = {

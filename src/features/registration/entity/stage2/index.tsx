@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { FileInput } from '../../../../components/inputs/file-input'
 import { FormTextInput } from '../../../../components/inputs/form-text-input'
 import { FormTextAreaInput } from '../../../../components/inputs/form-textArea-input'
@@ -8,6 +9,8 @@ import { RegistrationSubmitButton } from '../../components/registration-submit-b
 import { TRegistrationFeatureStage, TRegistrationFormStage2 } from '../../types'
 import style from './style.module.css'
 
+const conditions = [`'`, `"`, '`']
+
 export const RegistrationFeatureStage2 = ({ formHook, onSubmit }: TRegistrationFeatureStage<TRegistrationFormStage2>) => {
   const {
     register,
@@ -15,7 +18,28 @@ export const RegistrationFeatureStage2 = ({ formHook, onSubmit }: TRegistrationF
     formState: { errors },
     control,
     setValue,
+    getValues,
   } = formHook
+
+  const [haveTrack, setHaveTrack] = useState(false)
+  const [haveLink, setHaveLink] = useState(false)
+  const [haveFile, setHaveFile] = useState(false)
+
+  useEffect(() => {
+    // Проверяем автозаполнение (дефолтные поля) при инициализации
+    if (!!getValues('trackLink')) {
+      setHaveLink(true)
+    }
+  }, [getValues])
+
+  useEffect(() => {
+    // Проверяем при изменении полей
+    if (haveLink || haveFile) {
+      setHaveTrack(true)
+    } else {
+      setHaveTrack(false)
+    }
+  }, [haveLink, haveFile])
 
   return (
     <div className={style.wrapper}>
@@ -56,11 +80,27 @@ export const RegistrationFeatureStage2 = ({ formHook, onSubmit }: TRegistrationF
           title="Add Your Track"
           placeholder="For example, link from SoundCloud or Spotify"
           inputName="trackLink"
-          additionalRules={{}}
+          rules={{
+            required: haveTrack ? false : 'Required',
+            validate: {
+              checkSymbols: (v: string) => (conditions.some((el) => v.includes(el)) ? 'Must not contain ‘ or ”' : true),
+              ifItHave: (v: string) => setHaveLink(!!v),
+            },
+          }}
           {...{ register, errors }}
         />
 
-        <FileInput inputName="track" accept=".mp3,audio/*" {...{ register, errors, setValue }} />
+        <FileInput
+          inputName="track"
+          accept=".mp3,audio/*"
+          {...{ register, errors, setValue }}
+          rules={{
+            required: haveTrack ? false : 'Required',
+            validate: {
+              ifItHave: (v: File) => setHaveFile(!!v),
+            },
+          }}
+        />
 
         <Notice>
           <div className={style.trackNotice}>

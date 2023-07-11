@@ -8,7 +8,7 @@ import style from './style.module.css'
 import { TRegistrationFormStage1, TRegistrationFormStage2, TRegistrationFormStage3 } from './types'
 
 export default function RegistrationFeature() {
-  const [stage, setStage] = useState(3)
+  const [stage, setStage] = useState(1)
 
   const getDefaultValuesFromLocal = (itemName: string) => {
     const data = localStorage.getItem(itemName)
@@ -33,7 +33,14 @@ export default function RegistrationFeature() {
       case 2:
         return <RegistrationFeatureStage2 formHook={formHookStage2} onSubmit={(d) => onSubmitStage(d, 'regStage2Data')} />
       case 3:
-        return <RegistrationFeatureStage3 formHook={formHookStage3} onSubmit={(d) => onSubmitStage(d, 'regStage3Data')} />
+        return (
+          <RegistrationFeatureStage3
+            formHook={formHookStage3}
+            onSubmit={(d) => {
+              onSubmitStage(d, 'regStage3Data')
+            }}
+          />
+        )
     }
   }
 
