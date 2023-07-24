@@ -26,3 +26,14 @@ export const getFinallyRules = (rules: object, additionalRules: object | undefin
 export const isObjectNotEmpty = (objectName: object) => {
   return Object.keys(objectName).length > 0
 }
+
+export const createFormDataFromObject = (data: { [key: string]: any }): FormData => {
+  const formDataContent = new FormData()
+
+  for (const key in data) {
+    if (!data.hasOwnProperty(key)) continue
+    formDataContent.set(key, data[key])
+  }
+
+  return formDataContent
+}

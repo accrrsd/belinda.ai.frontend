@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { ReactComponent as BackArrow } from '../../images/BackArrow.svg'
+import { postUser } from '../../utils/api'
+import { createFormDataFromObject } from '../../utils/functions'
 import { RegistrationFeatureStage1 } from './entity/stage1'
 import { RegistrationFeatureStage2 } from './entity/stage2'
 import { RegistrationFeatureStage3 } from './entity/stage3'
@@ -8,7 +11,9 @@ import style from './style.module.css'
 import { TRegistrationFormStage1, TRegistrationFormStage2, TRegistrationFormStage3 } from './types'
 
 export default function RegistrationFeature() {
-  const [stage, setStage] = useState(1)
+  const [stage, setStage] = useState<1 | 2 | 3>(1)
+
+  const navigate = useNavigate()
 
   const getDefaultValuesFromLocal = (itemName: string) => {
     const data = localStorage.getItem(itemName)
@@ -19,7 +24,7 @@ export default function RegistrationFeature() {
   const formHookStage2 = useForm<TRegistrationFormStage2>({ mode: 'all', defaultValues: getDefaultValuesFromLocal('regStage2Data') })
   const formHookStage3 = useForm<TRegistrationFormStage3>({ mode: 'all', defaultValues: getDefaultValuesFromLocal('regStage3Data') })
 
-  const increaseStage = () => setStage((prev) => (prev + 1 > 3 ? 3 : prev + 1))
+  const increaseStage = () => setStage((prev) => (prev + 1 > 3 ? 3 : prev + 1) as 1 | 2 | 3)
 
   const onSubmitStage = (data: TRegistrationFormStage1 | TRegistrationFormStage2 | TRegistrationFormStage3, localStorageItemName: string) => {
     localStorage.setItem(localStorageItemName, JSON.stringify(data))
@@ -39,6 +44,8 @@ export default function RegistrationFeature() {
             onSubmit={(d) => {
               onSubmitStage(d, 'regStage3Data')
               sessionStorage.setItem('userAuthorized', 'true')
+              const formData = createFormDataFromObject(d)
+              postUser(formData).then(() => navigate('/'))
             }}
           />
         )
@@ -53,7 +60,7 @@ export default function RegistrationFeature() {
           <div className={style.stepWrapper}>
             <BackArrow
               className={`${style.backArrow} ${stage === 1 ? style.backArrowBorder : ''}`}
-              onClick={() => stage > 1 && setStage((prev) => prev - 1)}
+              onClick={() => stage > 1 && setStage((prev) => (prev - 1) as 1 | 2 | 3)}
             />
             <div className={style.subtitle}>Step {stage}</div>
           </div>
