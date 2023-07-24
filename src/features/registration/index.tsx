@@ -38,6 +38,7 @@ export default function RegistrationFeature() {
             formHook={formHookStage3}
             onSubmit={(d) => {
               onSubmitStage(d, 'regStage3Data')
+              sessionStorage.setItem('userAuthorized', 'true')
             }}
           />
         )
