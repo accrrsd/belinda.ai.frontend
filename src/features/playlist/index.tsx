@@ -1,223 +1,101 @@
 import style from './style.module.css'
-import image from '../../images/test-image.png'
-import {SubmitButton} from "../../components/inputs/submit-button";
+import { SubmitButton } from "../../components/inputs/submit-button";
+import { useState, useEffect, Key } from "react";
+import {getPlaylists} from "../../utils/api";
+import {splitArr} from "../../utils/functions";
+import testImage from '../../images/not-found-image.png'
 
-const cards = [
-    {
-        type: 'playlist',
-        title: 'Trap Bangers',
-        listeners: '36 432',
-        tracks: '36',
-        likesQty: '575',
-        // image: 'asd.png'
-    },
-    {
-        type: 'playlist',
-        title: 'Rap revolution',
-        listeners: '36 432',
-        tracks: '36',
-        likesQty: '75',
-        // image: 'asd.png'
-    },
-    {
-        type: 'playlist',
-        title: 'Trap Bangers',
-        listeners: '36 432',
-        tracks: '36',
-        likesQty: '5735',
-        // image: 'asd.png'
-    },
-    {
-        type: 'playlist',
-        title: 'Rap revolution',
-        listeners: '34 432',
-        tracks: '50',
-        likesQty: '1575',
-        // image: 'asd.png'
-    },
-    {
-        type: 'playlist',
-        title: 'Genre Fusion',
-        listeners: '11 432',
-        tracks: '22',
-        likesQty: '25',
-        // image: 'asd.png'
-    },
-    {
-        type: 'playlist',
-        title: 'Hip-Hop Heat',
-        listeners: '34 432',
-        tracks: '4',
-        likesQty: '175',
-        // image: 'asd.png'
-    }
-]
+export default function PlaylistFeature() {
+    const [playlists, setPlaylists] = useState<any[]>([])
+    useEffect(() => {
+        getPlaylists().then((res) => {
+            setPlaylists(splitArr(res, 6))
 
-export default function playlistFeature() {
+        })
+    }, []);
+    console.log(playlists)
     return (
         <div className={style.wrapper}>
             <div className={style.container}>
                 <div className={style.heading}>
-                    <h1 className={style.title}>Rap & R&B</h1>
-                    <p className={style.subtitle}>Playlist</p>
+                    <h1 className={style.title}>Playlists that AI deemed relevant for your promotion</h1>
+                    <p className={style.subtitle}>Choose a playlist you like and reach out to its curator</p>
                 </div>
                 <div className={style.grid}>
-                    <div className={style.row}>
-                        <ul className={style.list}>
-                            {cards.map((el, index) => (
-                                <li key={index} className={style.card}>
-                                    <img className={style.image} src={image} alt='Картинка тест' />
-                                    <div className={style.info}>
-                                        <div className={style.headline}>
-                                            <div className={style.type}>{el.type}</div>
-                                            <h2 className={style.name}>{el.title}</h2>
-                                        </div>
-                                        <div className={style.about}>
-                                            <div className={style.aboutText}>
-                                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M7.99935 8.48438C7.26602 8.48438 6.66602 8.25104 6.19935 7.78438C5.73268 7.31771 5.49935 6.71771 5.49935 5.98438C5.49935 5.25104 5.73268 4.65104 6.19935 4.18438C6.66602 3.71771 7.26602 3.48438 7.99935 3.48438C8.73268 3.48438 9.33268 3.71771 9.79935 4.18438C10.266 4.65104 10.4993 5.25104 10.4993 5.98438C10.4993 6.71771 10.266 7.31771 9.79935 7.78438C9.33268 8.25104 8.73268 8.48438 7.99935 8.48438ZM2.66602 13.8344V12.2677C2.66602 11.8455 2.77157 11.4844 2.98268 11.1844C3.19379 10.8844 3.46602 10.6566 3.79935 10.501C4.54379 10.1677 5.25768 9.91771 5.94102 9.75104C6.62435 9.58438 7.31046 9.50104 7.99935 9.50104C8.68824 9.50104 9.37157 9.58715 10.0493 9.75938C10.7271 9.9316 11.4382 10.1788 12.1827 10.501C12.5271 10.6566 12.8049 10.8844 13.016 11.1844C13.2271 11.4844 13.3327 11.8455 13.3327 12.2677V13.8344H2.66602Z" fill="#737373"/>
-                                                </svg>
-                                                Listeners
-                                            </div>
-                                            <div className={style.aboutQty}>{el.listeners}</div>
-                                        </div>
-                                        <div className={style.about}>
-                                            <div className={style.aboutText}>
-                                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M6.55078 14.5C5.85078 14.5 5.25911 14.2583 4.77578 13.775C4.29245 13.2917 4.05078 12.7 4.05078 12C4.05078 11.3 4.29245 10.7083 4.77578 10.225C5.25911 9.74167 5.85078 9.5 6.55078 9.5C6.86189 9.5 7.14245 9.54444 7.39245 9.63333C7.64245 9.72222 7.86189 9.84444 8.05078 10V2.5H11.9508V4.75H9.05078V12C9.05078 12.7 8.80912 13.2917 8.32578 13.775C7.84245 14.2583 7.25078 14.5 6.55078 14.5Z" fill="#737373"/>
-                                                </svg>
-                                                Tracks
-                                            </div>
-                                            <div className={style.aboutQty}>{el.tracks}</div>
-                                        </div>
-                                        <div className={style.aboutLikes}>
-                                            <div className={style.aboutLike}>
-                                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3 6.33511C3 8.61366 4.91569 10.8655 7.89328 12.7866C8.0587 12.8933 8.26147 13 8.40021 13C8.53895 13 8.74173 12.8933 8.90715 12.7866C11.8901 10.8655 13.8004 8.61366 13.8004 6.33511C13.8004 4.36606 12.4397 3 10.6948 3C9.67556 3 8.88047 3.46425 8.40021 4.16862C7.93063 3.46958 7.1302 3 6.11099 3C4.36073 3 3 4.36606 3 6.33511ZM4.09925 6.32978C4.09925 4.98506 4.98506 4.07257 6.17503 4.07257C7.13554 4.07257 7.67449 4.65422 8.01067 5.16115C8.16009 5.37994 8.26147 5.44931 8.40021 5.44931C8.54429 5.44931 8.635 5.3746 8.78975 5.16115C9.15261 4.66489 9.67022 4.07257 10.6254 4.07257C11.8207 4.07257 12.7065 4.98506 12.7065 6.32978C12.7065 8.20811 10.7535 10.2892 8.5016 11.7834C8.45357 11.8154 8.42156 11.8367 8.40021 11.8367C8.37887 11.8367 8.34685 11.8154 8.30416 11.7834C6.05229 10.2892 4.09925 8.20811 4.09925 6.32978Z" fill="#737373"/>
-                                                </svg>
-                                                {el.likesQty}
-                                            </div>
-                                            <div className={style.aboutDislike}>
-                                                <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M2.47656 4.4523C2.47656 6.73085 4.39225 8.98272 7.36984 10.9037C7.53526 11.0105 7.73803 11.1172 7.87678 11.1172C8.01552 11.1172 8.21829 11.0105 8.38371 10.9037C11.3666 8.98272 13.277 6.73085 13.277 4.4523C13.277 2.48325 11.9163 1.11719 10.1713 1.11719C9.15212 1.11719 8.35703 1.58144 7.87678 2.28581C7.40719 1.58677 6.60676 1.11719 5.58755 1.11719C3.83729 1.11719 2.47656 2.48325 2.47656 4.4523ZM3.57582 4.44696C3.57582 3.10225 4.46162 2.18976 5.65159 2.18976C6.6121 2.18976 7.15106 2.7714 7.48723 3.27834C7.63665 3.49712 7.73803 3.56649 7.87678 3.56649C8.02085 3.56649 8.11157 3.49179 8.26632 3.27834C8.62918 2.78208 9.14679 2.18976 10.102 2.18976C11.2973 2.18976 12.1831 3.10225 12.1831 4.44696C12.1831 6.3253 10.23 8.40641 7.97816 9.90054C7.93014 9.93256 7.89812 9.9539 7.87678 9.9539C7.85543 9.9539 7.82341 9.93256 7.78072 9.90054C5.52886 8.40641 3.57582 6.3253 3.57582 4.44696Z" fill="#737373"/>
-                                                    <line x1="14.9251" y1="0.381255" x2="1.32239" y2="11.9229" stroke="#737373"/>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <SubmitButton additionalStyle={style.button}>Choose this</SubmitButton>
+                    {Object.keys(playlists).map((key) => {
+                        // @ts-ignore
+                        return (
+                            <div className={style.row} key={key}>
+                                <ul className={style.list}>
+                                    {playlists[Number(key)].map((el: {
+                                        tracks_total: string;
+                                        owner_display_name: string;
+                                        name: string;
+                                        images_url: string;
+                                        id: Key | null | undefined; }) => {
+                                        return (
+                                            <li className={style.card} key={el.id}>
+                                                {el.images_url ?
+                                                    <img
+                                                        className={style.image}
+                                                        src={el.images_url}
+                                                        alt='Картинка тест'
+                                                        onError={({ currentTarget }) => {
+                                                            currentTarget.onerror = null; // prevents looping
+                                                            currentTarget.src= testImage;
+                                                        }}
+                                                    />
+                                                    :
+                                                    <img
+                                                        className={style.image}
+                                                        src={testImage}
+                                                        alt='Картинка тест'
+                                                    />
+                                                }
+                                                <div className={style.info}>
+                                                    <div className={style.headline}>
+                                                        <div className={style.type}>{el.owner_display_name}</div>
+                                                        <h2 className={style.name}>{el.name}</h2>
+                                                    </div>
+                                                    <div className={style.about}>
+                                                        <div className={style.aboutText}>
+                                                            <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
+                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M7.99935 8.48438C7.26602 8.48438 6.66602 8.25104 6.19935 7.78438C5.73268 7.31771 5.49935 6.71771 5.49935 5.98438C5.49935 5.25104 5.73268 4.65104 6.19935 4.18438C6.66602 3.71771 7.26602 3.48438 7.99935 3.48438C8.73268 3.48438 9.33268 3.71771 9.79935 4.18438C10.266 4.65104 10.4993 5.25104 10.4993 5.98438C10.4993 6.71771 10.266 7.31771 9.79935 7.78438C9.33268 8.25104 8.73268 8.48438 7.99935 8.48438ZM2.66602 13.8344V12.2677C2.66602 11.8455 2.77157 11.4844 2.98268 11.1844C3.19379 10.8844 3.46602 10.6566 3.79935 10.501C4.54379 10.1677 5.25768 9.91771 5.94102 9.75104C6.62435 9.58438 7.31046 9.50104 7.99935 9.50104C8.68824 9.50104 9.37157 9.58715 10.0493 9.75938C10.7271 9.9316 11.4382 10.1788 12.1827 10.501C12.5271 10.6566 12.8049 10.8844 13.016 11.1844C13.2271 11.4844 13.3327 11.8455 13.3327 12.2677V13.8344H2.66602Z"
+                                                                    fill="#737373"/>
+                                                            </svg>
+                                                            Listeners
+                                                        </div>
+                                                        <div className={style.aboutQty}>23 500</div>
+                                                    </div>
+                                                    <div className={style.about}>
+                                                        <div className={style.aboutText}>
+                                                            <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
+                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M6.55078 14.5C5.85078 14.5 5.25911 14.2583 4.77578 13.775C4.29245 13.2917 4.05078 12.7 4.05078 12C4.05078 11.3 4.29245 10.7083 4.77578 10.225C5.25911 9.74167 5.85078 9.5 6.55078 9.5C6.86189 9.5 7.14245 9.54444 7.39245 9.63333C7.64245 9.72222 7.86189 9.84444 8.05078 10V2.5H11.9508V4.75H9.05078V12C9.05078 12.7 8.80912 13.2917 8.32578 13.775C7.84245 14.2583 7.25078 14.5 6.55078 14.5Z"
+                                                                    fill="#737373"/>
+                                                            </svg>
+                                                            Tracks
+                                                        </div>
+                                                        <div className={style.aboutQty}>{el.tracks_total}</div>
+                                                    </div>
+                                                    <SubmitButton additionalStyle={style.button}>Choose this</SubmitButton>
+                                                </div>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                                <div className={style.tooltip}>
+                                    <div className={style.tooltipTitle}>That's why it suits you</div>
+                                    <div className={style.tooltipText}>These playlists are recommended as they feature
+                                        collaborations with JID and Logic
                                     </div>
-                                </li>
-                            ))}
-                        </ul>
-                        <div className={style.tooltip}>
-                            <div className={style.tooltipTitle}>That's why it suits you</div>
-                            <div className={style.tooltipText}>These playlists are recommended as they feature collaborations with JID and Logic</div>
-                        </div>
-                    </div>
-                    <div className={style.row}>
-                        <ul className={style.list}>
-                            {cards.map((el, index) => (
-                                <li key={index} className={style.card}>
-                                    <img className={style.image} src={image} alt='Картинка тест' />
-                                    <div className={style.info}>
-                                        <div className={style.headline}>
-                                            <div className={style.type}>{el.type}</div>
-                                            <h2 className={style.name}>{el.title}</h2>
-                                        </div>
-                                        <div className={style.about}>
-                                            <div className={style.aboutText}>
-                                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M7.99935 8.48438C7.26602 8.48438 6.66602 8.25104 6.19935 7.78438C5.73268 7.31771 5.49935 6.71771 5.49935 5.98438C5.49935 5.25104 5.73268 4.65104 6.19935 4.18438C6.66602 3.71771 7.26602 3.48438 7.99935 3.48438C8.73268 3.48438 9.33268 3.71771 9.79935 4.18438C10.266 4.65104 10.4993 5.25104 10.4993 5.98438C10.4993 6.71771 10.266 7.31771 9.79935 7.78438C9.33268 8.25104 8.73268 8.48438 7.99935 8.48438ZM2.66602 13.8344V12.2677C2.66602 11.8455 2.77157 11.4844 2.98268 11.1844C3.19379 10.8844 3.46602 10.6566 3.79935 10.501C4.54379 10.1677 5.25768 9.91771 5.94102 9.75104C6.62435 9.58438 7.31046 9.50104 7.99935 9.50104C8.68824 9.50104 9.37157 9.58715 10.0493 9.75938C10.7271 9.9316 11.4382 10.1788 12.1827 10.501C12.5271 10.6566 12.8049 10.8844 13.016 11.1844C13.2271 11.4844 13.3327 11.8455 13.3327 12.2677V13.8344H2.66602Z" fill="#737373"/>
-                                                </svg>
-                                                Listeners
-                                            </div>
-                                            <div className={style.aboutQty}>{el.listeners}</div>
-                                        </div>
-                                        <div className={style.about}>
-                                            <div className={style.aboutText}>
-                                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M6.55078 14.5C5.85078 14.5 5.25911 14.2583 4.77578 13.775C4.29245 13.2917 4.05078 12.7 4.05078 12C4.05078 11.3 4.29245 10.7083 4.77578 10.225C5.25911 9.74167 5.85078 9.5 6.55078 9.5C6.86189 9.5 7.14245 9.54444 7.39245 9.63333C7.64245 9.72222 7.86189 9.84444 8.05078 10V2.5H11.9508V4.75H9.05078V12C9.05078 12.7 8.80912 13.2917 8.32578 13.775C7.84245 14.2583 7.25078 14.5 6.55078 14.5Z" fill="#737373"/>
-                                                </svg>
-                                                Tracks
-                                            </div>
-                                            <div className={style.aboutQty}>{el.tracks}</div>
-                                        </div>
-                                        <div className={style.aboutLikes}>
-                                            <div className={style.aboutLike}>
-                                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3 6.33511C3 8.61366 4.91569 10.8655 7.89328 12.7866C8.0587 12.8933 8.26147 13 8.40021 13C8.53895 13 8.74173 12.8933 8.90715 12.7866C11.8901 10.8655 13.8004 8.61366 13.8004 6.33511C13.8004 4.36606 12.4397 3 10.6948 3C9.67556 3 8.88047 3.46425 8.40021 4.16862C7.93063 3.46958 7.1302 3 6.11099 3C4.36073 3 3 4.36606 3 6.33511ZM4.09925 6.32978C4.09925 4.98506 4.98506 4.07257 6.17503 4.07257C7.13554 4.07257 7.67449 4.65422 8.01067 5.16115C8.16009 5.37994 8.26147 5.44931 8.40021 5.44931C8.54429 5.44931 8.635 5.3746 8.78975 5.16115C9.15261 4.66489 9.67022 4.07257 10.6254 4.07257C11.8207 4.07257 12.7065 4.98506 12.7065 6.32978C12.7065 8.20811 10.7535 10.2892 8.5016 11.7834C8.45357 11.8154 8.42156 11.8367 8.40021 11.8367C8.37887 11.8367 8.34685 11.8154 8.30416 11.7834C6.05229 10.2892 4.09925 8.20811 4.09925 6.32978Z" fill="#737373"/>
-                                                </svg>
-                                                {el.likesQty}
-                                            </div>
-                                            <div className={style.aboutDislike}>
-                                                <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M2.47656 4.4523C2.47656 6.73085 4.39225 8.98272 7.36984 10.9037C7.53526 11.0105 7.73803 11.1172 7.87678 11.1172C8.01552 11.1172 8.21829 11.0105 8.38371 10.9037C11.3666 8.98272 13.277 6.73085 13.277 4.4523C13.277 2.48325 11.9163 1.11719 10.1713 1.11719C9.15212 1.11719 8.35703 1.58144 7.87678 2.28581C7.40719 1.58677 6.60676 1.11719 5.58755 1.11719C3.83729 1.11719 2.47656 2.48325 2.47656 4.4523ZM3.57582 4.44696C3.57582 3.10225 4.46162 2.18976 5.65159 2.18976C6.6121 2.18976 7.15106 2.7714 7.48723 3.27834C7.63665 3.49712 7.73803 3.56649 7.87678 3.56649C8.02085 3.56649 8.11157 3.49179 8.26632 3.27834C8.62918 2.78208 9.14679 2.18976 10.102 2.18976C11.2973 2.18976 12.1831 3.10225 12.1831 4.44696C12.1831 6.3253 10.23 8.40641 7.97816 9.90054C7.93014 9.93256 7.89812 9.9539 7.87678 9.9539C7.85543 9.9539 7.82341 9.93256 7.78072 9.90054C5.52886 8.40641 3.57582 6.3253 3.57582 4.44696Z" fill="#737373"/>
-                                                    <line x1="14.9251" y1="0.381255" x2="1.32239" y2="11.9229" stroke="#737373"/>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <SubmitButton additionalStyle={style.button}>Choose this</SubmitButton>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                        <div className={style.tooltip}>
-                            <div className={style.tooltipTitle}>That's why it suits you</div>
-                            <div className={style.tooltipText}>These playlists are recommended as they feature collaborations with JID and Logic</div>
-                        </div>
-                    </div>
-                    <div className={style.row}>
-                        <ul className={style.list}>
-                            {cards.map((el, index) => (
-                                <li key={index} className={style.card}>
-                                    <img className={style.image} src={image} alt='Картинка тест' />
-                                    <div className={style.info}>
-                                        <div className={style.headline}>
-                                            <div className={style.type}>{el.type}</div>
-                                            <h2 className={style.name}>{el.title}</h2>
-                                        </div>
-                                        <div className={style.about}>
-                                            <div className={style.aboutText}>
-                                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M7.99935 8.48438C7.26602 8.48438 6.66602 8.25104 6.19935 7.78438C5.73268 7.31771 5.49935 6.71771 5.49935 5.98438C5.49935 5.25104 5.73268 4.65104 6.19935 4.18438C6.66602 3.71771 7.26602 3.48438 7.99935 3.48438C8.73268 3.48438 9.33268 3.71771 9.79935 4.18438C10.266 4.65104 10.4993 5.25104 10.4993 5.98438C10.4993 6.71771 10.266 7.31771 9.79935 7.78438C9.33268 8.25104 8.73268 8.48438 7.99935 8.48438ZM2.66602 13.8344V12.2677C2.66602 11.8455 2.77157 11.4844 2.98268 11.1844C3.19379 10.8844 3.46602 10.6566 3.79935 10.501C4.54379 10.1677 5.25768 9.91771 5.94102 9.75104C6.62435 9.58438 7.31046 9.50104 7.99935 9.50104C8.68824 9.50104 9.37157 9.58715 10.0493 9.75938C10.7271 9.9316 11.4382 10.1788 12.1827 10.501C12.5271 10.6566 12.8049 10.8844 13.016 11.1844C13.2271 11.4844 13.3327 11.8455 13.3327 12.2677V13.8344H2.66602Z" fill="#737373"/>
-                                                </svg>
-                                                Listeners
-                                            </div>
-                                            <div className={style.aboutQty}>{el.listeners}</div>
-                                        </div>
-                                        <div className={style.about}>
-                                            <div className={style.aboutText}>
-                                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M6.55078 14.5C5.85078 14.5 5.25911 14.2583 4.77578 13.775C4.29245 13.2917 4.05078 12.7 4.05078 12C4.05078 11.3 4.29245 10.7083 4.77578 10.225C5.25911 9.74167 5.85078 9.5 6.55078 9.5C6.86189 9.5 7.14245 9.54444 7.39245 9.63333C7.64245 9.72222 7.86189 9.84444 8.05078 10V2.5H11.9508V4.75H9.05078V12C9.05078 12.7 8.80912 13.2917 8.32578 13.775C7.84245 14.2583 7.25078 14.5 6.55078 14.5Z" fill="#737373"/>
-                                                </svg>
-                                                Tracks
-                                            </div>
-                                            <div className={style.aboutQty}>{el.tracks}</div>
-                                        </div>
-                                        <div className={style.aboutLikes}>
-                                            <div className={style.aboutLike}>
-                                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M3 6.33511C3 8.61366 4.91569 10.8655 7.89328 12.7866C8.0587 12.8933 8.26147 13 8.40021 13C8.53895 13 8.74173 12.8933 8.90715 12.7866C11.8901 10.8655 13.8004 8.61366 13.8004 6.33511C13.8004 4.36606 12.4397 3 10.6948 3C9.67556 3 8.88047 3.46425 8.40021 4.16862C7.93063 3.46958 7.1302 3 6.11099 3C4.36073 3 3 4.36606 3 6.33511ZM4.09925 6.32978C4.09925 4.98506 4.98506 4.07257 6.17503 4.07257C7.13554 4.07257 7.67449 4.65422 8.01067 5.16115C8.16009 5.37994 8.26147 5.44931 8.40021 5.44931C8.54429 5.44931 8.635 5.3746 8.78975 5.16115C9.15261 4.66489 9.67022 4.07257 10.6254 4.07257C11.8207 4.07257 12.7065 4.98506 12.7065 6.32978C12.7065 8.20811 10.7535 10.2892 8.5016 11.7834C8.45357 11.8154 8.42156 11.8367 8.40021 11.8367C8.37887 11.8367 8.34685 11.8154 8.30416 11.7834C6.05229 10.2892 4.09925 8.20811 4.09925 6.32978Z" fill="#737373"/>
-                                                </svg>
-                                                {el.likesQty}
-                                            </div>
-                                            <div className={style.aboutDislike}>
-                                                <svg width="16" height="13" viewBox="0 0 16 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M2.47656 4.4523C2.47656 6.73085 4.39225 8.98272 7.36984 10.9037C7.53526 11.0105 7.73803 11.1172 7.87678 11.1172C8.01552 11.1172 8.21829 11.0105 8.38371 10.9037C11.3666 8.98272 13.277 6.73085 13.277 4.4523C13.277 2.48325 11.9163 1.11719 10.1713 1.11719C9.15212 1.11719 8.35703 1.58144 7.87678 2.28581C7.40719 1.58677 6.60676 1.11719 5.58755 1.11719C3.83729 1.11719 2.47656 2.48325 2.47656 4.4523ZM3.57582 4.44696C3.57582 3.10225 4.46162 2.18976 5.65159 2.18976C6.6121 2.18976 7.15106 2.7714 7.48723 3.27834C7.63665 3.49712 7.73803 3.56649 7.87678 3.56649C8.02085 3.56649 8.11157 3.49179 8.26632 3.27834C8.62918 2.78208 9.14679 2.18976 10.102 2.18976C11.2973 2.18976 12.1831 3.10225 12.1831 4.44696C12.1831 6.3253 10.23 8.40641 7.97816 9.90054C7.93014 9.93256 7.89812 9.9539 7.87678 9.9539C7.85543 9.9539 7.82341 9.93256 7.78072 9.90054C5.52886 8.40641 3.57582 6.3253 3.57582 4.44696Z" fill="#737373"/>
-                                                    <line x1="14.9251" y1="0.381255" x2="1.32239" y2="11.9229" stroke="#737373"/>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <SubmitButton additionalStyle={style.button}>Choose this</SubmitButton>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                        <div className={style.tooltip}>
-                            <div className={style.tooltipTitle}>That's why it suits you</div>
-                            <div className={style.tooltipText}>These playlists are recommended as they feature collaborations with JID and Logic</div>
-                        </div>
-                    </div>
+                                </div>
+                                </div>
+                            )
+                    })}
                 </div>
             </div>
         </div>

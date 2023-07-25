@@ -57,6 +57,8 @@
 
 .image {
     border-radius: 4px;
+    height: 216px;
+    object-fit: cover;
 }
 
 .type {
@@ -77,6 +79,10 @@
     font-size: 32px;
     font-weight: 600;
     line-height: normal;
+    word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .button {

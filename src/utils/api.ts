@@ -11,3 +11,13 @@ export const postUser = (content: FormData) => {
     body: content,
   }).then(checkResponseWithoutContent)
 }
+
+export const getPlaylists = () => {
+  return fetch(`${currentUrl}/playlists`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then(checkResponse)
+}
+
