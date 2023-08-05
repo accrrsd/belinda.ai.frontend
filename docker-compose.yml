@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  belinda_front:
+    container_name: belinda_front
+    build:
+      context: .
+      args:
+        - APP_PORT=4999
+    volumes:
+      - .:/app
+    ports:
+      - "4999:4999"
+ 
