@@ -1,0 +1,50 @@
+.content {
+  min-width: 507px;
+  max-width: 1000px;
+  width: 100%;
+
+  min-height: 100px;
+  max-height: 100%;
+
+  margin: 54px auto;
+  border-radius: 40px;
+  padding: 50px;
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  align-items: center;
+  margin-bottom: 45px;
+}
+
+.title {
+  font-size: 48px;
+  line-height: 58px;
+}
+
+.stepWrapper {
+  display: flex;
+  gap: 32px;
+  color: var(--text-main);
+  align-items: center;
+}
+
+.backArrow {
+  width: 16px;
+  height: 28px;
+  cursor: pointer;
+}
+
+.backArrowBorder {
+  cursor: not-allowed;
+}
+
+.subtitle {
+  font-size: 32px;
+  line-height: 39px;
+  color: var(--text-main-2);
+}
