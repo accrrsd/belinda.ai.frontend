@@ -24,3 +24,10 @@
   margin-top: calc(40px - 23px);
   outline: none;
 }
+
+.navButton:active {
+  background: #ff1b2b;
+}
+.navButton:hover {
+  background: #ff9aa1;
+}

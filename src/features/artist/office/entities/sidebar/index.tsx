@@ -34,9 +34,7 @@ export const ArtistSideBar = () => {
             User's Information
           </NavLink>
         </li>
-        <NavLink style={{ width: `100%` }} to="add-track">
-          <NavButton />
-        </NavLink>
+        <NavButton to="add-track" />
       </ul>
     </div>
   )
