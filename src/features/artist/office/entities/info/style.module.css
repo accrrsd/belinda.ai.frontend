@@ -1,0 +1,30 @@
+.wrapper {
+  padding: 40px 60px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  margin: 0 auto;
+}
+
+.title {
+  color: var(--text-main, #000);
+
+  /* Fonts/Header/H2 */
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.closeButton {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}

@@ -1,0 +1,19 @@
+:root {
+  --CuratorOfficePadding: 100px;
+}
+
+.page {
+  display: flex;
+  background: var(--gradient-backgrnd);
+  min-height: 100vh;
+  min-width: 320px;
+  padding: var(--CuratorOfficePadding) 90px;
+  align-items: stretch;
+  gap: 40px;
+}
+
+.content {
+  border-radius: 0px 40px 40px 0px;
+  background: #fff;
+  flex: 1;
+}

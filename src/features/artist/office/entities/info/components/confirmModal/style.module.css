@@ -1,0 +1,47 @@
+.overlay {
+  background: #d9d9d994;
+}
+
+.overlayContent {
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  border-radius: 10px;
+  background: #fff;
+
+  align-items: center;
+}
+
+.overlayTitle {
+  color: #000;
+  text-align: center;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.overlayButtonWrapper {
+  display: flex;
+  gap: 28px;
+}
+
+.overlayButton {
+  height: 40px;
+  border-radius: 40px;
+  background: var(--buttons-main-def, #fdc74f);
+
+  color: var(--color-backgrnd, #fff);
+  text-align: center;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+
+  padding: 10px 20px;
+
+  cursor: pointer;
+}

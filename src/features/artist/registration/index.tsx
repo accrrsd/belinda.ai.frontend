@@ -1,21 +1,29 @@
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
-import { ArtistRegistrationForm } from './form'
-import { TArtistRegistration } from './types'
+import { ArtistInformationForm, TArtistInformation } from '../../../components/forms/artist-information-form'
+import style from './style.module.css'
 
 export default function ArtistRegistrationFeature() {
-  const navigate = useNavigate()
-
   const getDefaultValuesFromLocal = (itemName: string) => {
     const data = localStorage.getItem(itemName)
     return data ? JSON.parse(data) : null
   }
 
-  const formHook = useForm<TArtistRegistration>({ mode: 'all', defaultValues: getDefaultValuesFromLocal('regStage1Data') })
+  // todo сделать запрос на сервер об информации пользователя и сохранить его в локалстордж
+  //@ts-ignore:next-line
+  const formHook = useForm<TArtistInformation>({ mode: 'all', defaultValues: getDefaultValuesFromLocal('ArtistInfo') })
 
-  const onSubmit = (data: TArtistRegistration) => {
-    localStorage.setItem('regStage1Data', JSON.stringify(data))
-  }
+  const onSubmit = (data: TArtistInformation) => {}
 
-  return <ArtistRegistrationForm formHook={formHook} onSubmit={(d: TArtistRegistration) => onSubmit(d)} />
+  return (
+    <div className={style.page}>
+      <div className={style.content}>
+        <div className={style.titleWrapper}>
+          <span className={style.title}>Registration Form</span>
+        </div>
+        <div className={style.wrapper}>
+          <ArtistInformationForm formHook={formHook} onSubmit={(d: TArtistInformation) => onSubmit(d)} />
+        </div>
+      </div>
+    </div>
+  )
 }

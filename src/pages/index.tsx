@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import CardFeature from 'src/features/card'
+import NotFoundFeature from 'src/features/not-found'
+import PlaylistFeature from 'src/features/playlist'
+import TitlePageFeature from 'src/features/title-page'
 import { ProtectedRoutes } from '../components/protected-routes/protected-routes'
 import ArtistRoutes from './Artist'
-import CardPage from './card'
-import NotFoundPage from './not-found'
-import PlaylistPage from './playlist'
-import TitlePage from './title'
 
 export default function App() {
   const [userAuthorized, setUserAuthorized] = useState(false)
@@ -16,14 +16,14 @@ export default function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<TitlePage />} />
+      <Route path="/" element={<TitlePageFeature />} />
       <Route path="/artist/*" element={<ArtistRoutes />} />
 
       <Route element={<ProtectedRoutes needCondition={true} condition={userAuthorized} redirect="/" />}>
-        <Route path="/playlist" element={<PlaylistPage />} />
-        <Route path="/card" element={<CardPage />} />
+        <Route path="/playlist" element={<PlaylistFeature />} />
+        <Route path="/card" element={<CardFeature />} />
       </Route>
-      <Route path="*" element={<NotFoundPage />} />
+      <Route path="*" element={<NotFoundFeature />} />
     </Routes>
   )
 }

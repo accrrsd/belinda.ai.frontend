@@ -1,10 +1,11 @@
 import { Route, Routes } from 'react-router-dom'
 import ArtistOffice from 'src/features/artist/office'
 import { ArtistAddTrack } from 'src/features/artist/office/entities/add-track'
+import { ArtistInformation } from 'src/features/artist/office/entities/info'
 import { ArtistRequests } from 'src/features/artist/office/entities/requests'
 import { ArtistTracks } from 'src/features/artist/office/entities/tracks'
 import ArtistRegistrationFeature from 'src/features/artist/registration'
-import NotFoundPage from '../not-found'
+import NotFoundFeature from 'src/features/not-found'
 
 export default function ArtistRoutes() {
   return (
@@ -13,10 +14,10 @@ export default function ArtistRoutes() {
       <Route path="/" element={<ArtistOffice />}>
         <Route path="requests" element={<ArtistRequests />} />
         <Route path="tracks" element={<ArtistTracks />} />
-        <Route path="info" element={<></>} />
+        <Route path="info" element={<ArtistInformation />} />
         <Route path="add-track" element={<ArtistAddTrack />} />
       </Route>
-      <Route path="*" element={<NotFoundPage />} />
+      <Route path="*" element={<NotFoundFeature />} />
     </Routes>
   )
 }
