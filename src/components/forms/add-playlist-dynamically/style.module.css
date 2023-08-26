@@ -1,0 +1,87 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.costWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.costTitle {
+  color: var(--text-main-2, #737373);
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  display: flex;
+  gap: 4px;
+
+  align-items: flex-start;
+}
+
+.contentButton {
+  cursor: pointer;
+  align-self: flex-end;
+  border-radius: 40px;
+  display: flex;
+  width: 140px;
+  height: 40px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  outline: none;
+  text-align: center;
+  /* Button/XS */
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.clearButton {
+  background: var(--buttons-main-def, #fdc74f);
+  border: none;
+  color: var(--color-backgrnd, #fff);
+}
+
+.exitButton {
+  background: #ff5f72;
+  border: 3px solid #fffcb0;
+  color: #fffcb0;
+}
+
+.addButton {
+  background-color: transparent;
+  outline: none;
+  user-select: none;
+  border: none;
+
+  align-items: center;
+
+  align-self: flex-end;
+
+  margin-top: calc(40px - 20px);
+
+  cursor: pointer;
+  display: flex;
+  gap: 8px;
+
+  color: var(--text-main-2, #737373);
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.plusCircle {
+  width: 20px;
+  height: 20px;
+}

@@ -35,7 +35,7 @@ export const ArtistInformationForm = ({ formHook, onSubmit }: TStage<TArtistInfo
         placeholder="For example, dmicofficial@gmail.com"
         inputName="email"
         {...{ register, errors }}
-        additionalRules={{
+        validateRules={{
           validate: {
             checkEmail: (v: string) => (EmailRegExp.test(v) ? true : 'Incorrect Email Address'),
           },
@@ -53,7 +53,7 @@ export const ArtistInformationForm = ({ formHook, onSubmit }: TStage<TArtistInfo
           const formattedPhone = new AsYouType().input(clearCurrentValue)
           if (formattedPhone) setValue('phone', formattedPhone)
         }}
-        additionalRules={{
+        validateRules={{
           required: false,
           validate: {
             checkPhoneNumber: (v: string) => (!v ? true : isValidPhoneNumber(v) ? true : 'Incorrect Phone Number'),

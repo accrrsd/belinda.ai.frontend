@@ -2,14 +2,14 @@ import { useRef, useState } from 'react'
 import { FieldErrors, FieldValues, Path, UseFormRegister, UseFormSetValue } from 'react-hook-form'
 import { v4 } from 'uuid'
 import { ReactComponent as TableImage } from '../../../images/Table.svg'
-import { checkError, getFinallyRules } from '../../../utils/functions'
+import { checkError, getFinallyValidateRules } from '../../../utils/functions'
 import style from './file-input.module.css'
 
 type TFileInput<T extends FieldValues> = {
   register: UseFormRegister<T>
   inputName: Path<T>
   rules?: object
-  additionalRules?: object
+  validateRules?: object
   errors: FieldErrors<T>
   setValue: UseFormSetValue<T>
   setSingleValue?: boolean
@@ -25,7 +25,7 @@ export const FileInput = <T extends FieldValues>({
   register,
   inputName,
   rules = defaultRules,
-  additionalRules,
+  validateRules,
   errors,
   children,
   onChange,
@@ -38,7 +38,7 @@ export const FileInput = <T extends FieldValues>({
   ...rest
 }: TFileInput<T>) => {
   const error = checkError(inputName, errors)
-  const finallyRules = getFinallyRules(rules, additionalRules)
+  const finallyRules = getFinallyValidateRules(rules, validateRules)
   const [fileName, setFileName] = useState<string | undefined>(undefined)
   const [dragActive, setDragActive] = useState(false)
 

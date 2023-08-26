@@ -7,7 +7,7 @@ import { TArtistAddTrackStage1, TArtistAddTrackStage2 } from './types'
 import { ArtistAddTrackStage1 } from './entities/stage1'
 import { ArtistAddTrackStage2 } from './entities/stage2'
 
-export const ArtistAddTrack = () => {
+export const ArtistAddTrackFeature = () => {
   const [stage, setStage] = useState<1 | 2>(1)
 
   const formHookStage1 = useForm<TArtistAddTrackStage1>({ mode: 'all' })

@@ -1,12 +1,12 @@
 import { NavLink } from 'react-router-dom'
 import { ReactComponent as Logo } from 'src/images/Logo.svg'
-import { ReactComponent as MusicIcon } from 'src/images/musicIcon.svg'
-import { ReactComponent as RequestIcon } from 'src/images/requestIcon.svg'
+import { ReactComponent as PlaylistIcon } from 'src/images/playlistIcon.svg'
+import { ReactComponent as UserIcon } from 'src/images/userIcon.svg'
 
 import { NavButton } from 'src/components/inputs/nav-button/nav-button'
 import style from './style.module.css'
 
-export const ArtistSideBar = () => {
+export const CuratorSideBar = () => {
   const getActiveNavLink = (isActive: boolean) => `${style.navItem} ${isActive ? style.navItemActive : ''}`
 
   return (
@@ -17,14 +17,14 @@ export const ArtistSideBar = () => {
       <ul className={style.navList}>
         <li>
           <NavLink to="playlists" className={({ isActive }) => getActiveNavLink(isActive)}>
-            <RequestIcon className={style.navIcon} />
+            <PlaylistIcon className={style.navIcon} />
             My playlists
           </NavLink>
         </li>
         <li>
           <NavLink to="info" className={({ isActive }) => getActiveNavLink(isActive)}>
-            <MusicIcon className={style.navIcon} />
-            My Tracks
+            <UserIcon className={style.navIcon} />
+            User's information
           </NavLink>
         </li>
         <NavButton to="add-playlist" text="ADD PLAYLIST" />

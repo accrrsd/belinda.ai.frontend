@@ -10,7 +10,7 @@ type TDropDownSelectInput<T extends FieldValues> = {
   inputName: Path<T>
   options: TDropDownItem[]
   rules?: object
-  additionalRules?: object
+  validateRules?: object
   onChange?: (value: TDropDownItem) => void
   defaultValueIndex?: number
   className?: { readonly [key: string]: string }

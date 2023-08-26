@@ -1,12 +1,12 @@
 import { FieldErrors, FieldValues, Path, UseFormRegister } from 'react-hook-form'
-import { checkError, getFinallyRules } from '../../../utils/functions'
+import { checkError, getFinallyValidateRules } from '../../../utils/functions'
 import style from './form-textArea-input.module.css'
 
 type TFormTextAreaInput<T extends FieldValues> = {
   register: UseFormRegister<T>
   inputName: Path<T>
   rules?: object
-  additionalRules?: object
+  validateRules?: object
   errors: FieldErrors<T>
   title: string
   subtitle?: string
@@ -21,7 +21,7 @@ export const FormTextAreaInput = <T extends FieldValues>({
   inputName,
   errors,
   rules = defaultRules,
-  additionalRules,
+  validateRules,
   title,
   subtitle,
   type,
@@ -32,7 +32,7 @@ export const FormTextAreaInput = <T extends FieldValues>({
   ...rest
 }: TFormTextAreaInput<T>) => {
   const error = checkError(inputName, errors)
-  const finallyRules = getFinallyRules(rules, additionalRules)
+  const finallyRules = getFinallyValidateRules(rules, validateRules)
 
   const { onChange: onChangeRegister, onBlur: onBlurRegister, name, ref } = register(inputName, finallyRules)
 

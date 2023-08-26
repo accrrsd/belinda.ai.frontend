@@ -1,5 +1,5 @@
 import { Control, FieldErrors, FieldValues, Path, useController } from 'react-hook-form'
-import { checkError, getFinallyRules } from '../../../utils/functions'
+import { checkError, getFinallyValidateRules } from '../../../utils/functions'
 import { TDropDownItem } from '../../../utils/types'
 import { DropDownSelect } from './drop-down-select'
 
@@ -8,7 +8,7 @@ type TDropDownSelectInput<T extends FieldValues> = {
   inputName: Path<T>
   options: TDropDownItem[]
   rules?: object
-  additionalRules?: object
+  validateRules?: object
   onChange?: (value: TDropDownItem) => void
   defaultValueIndex?: number
   className?: { readonly [key: string]: string }
@@ -23,7 +23,7 @@ const DropDownSelectInput = <T extends FieldValues>({
   inputName,
   options,
   rules,
-  additionalRules,
+  validateRules,
   onChange,
   defaultValueIndex,
   className,
@@ -34,7 +34,7 @@ const DropDownSelectInput = <T extends FieldValues>({
 }: TDropDownSelectInput<T>) => {
   const subRules = { isOpenProp, DStyle: className, options, absolute, placeholder }
   const error = checkError(inputName, errors)
-  const finallyRules = rules ? getFinallyRules(rules, additionalRules) : undefined
+  const finallyRules = rules ? getFinallyValidateRules(rules, validateRules) : undefined
 
   const setDefaultValue = () => {
     if (!defaultValueIndex) return options[0]

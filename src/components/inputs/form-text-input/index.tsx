@@ -1,14 +1,14 @@
 import { FieldErrors, FieldValues, Path, UseFormRegister } from 'react-hook-form'
-import { checkError, getFinallyRules } from '../../../utils/functions'
+import { checkError, getFinallyValidateRules } from '../../../utils/functions'
 import style from './form-text-input.module.css'
 
 type TFormTextInput<T extends FieldValues> = {
   register: UseFormRegister<T>
   inputName: Path<T>
   rules?: object
-  additionalRules?: object
+  validateRules?: object
   errors: FieldErrors<T>
-  title: string
+  title?: string
   subtitle?: string
 } & React.HTMLProps<HTMLInputElement>
 
@@ -26,7 +26,7 @@ export const FormTextInput = <T extends FieldValues>({
   inputName,
   errors,
   rules = defaultRules,
-  additionalRules,
+  validateRules,
   title,
   subtitle,
   type,
@@ -37,7 +37,7 @@ export const FormTextInput = <T extends FieldValues>({
   ...rest
 }: TFormTextInput<T>) => {
   const error = checkError(inputName, errors)
-  const finallyRules = getFinallyRules(rules, additionalRules)
+  const finallyRules = getFinallyValidateRules(rules, validateRules)
 
   const { onChange: onChangeRegister, onBlur: onBlurRegister, name, ref } = register(inputName, finallyRules)
 
@@ -55,10 +55,12 @@ export const FormTextInput = <T extends FieldValues>({
 
   return (
     <div className={style.wrapper}>
-      <div className={style.textWrapper}>
-        {title && <span className={style.title}>{title}</span>}
-        {subtitle && <span className={style.subtitle}>{subtitle}</span>}
-      </div>
+      {(title || subtitle) && (
+        <div className={style.textWrapper}>
+          {title && <span className={style.title}>{title}</span>}
+          {subtitle && <span className={style.subtitle}>{subtitle}</span>}
+        </div>
+      )}
       <input
         onChange={customOnChange}
         onBlur={customOnBlur}

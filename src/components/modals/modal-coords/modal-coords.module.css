@@ -1,0 +1,11 @@
+.wrapper {
+  position: absolute;
+  z-index: 1001;
+  left: 0;
+  right: 0;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+.overlay {
+  background-color: transparent;
+}

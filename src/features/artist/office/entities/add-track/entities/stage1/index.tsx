@@ -4,13 +4,11 @@ import { FormTextInput } from 'src/components/inputs/form-text-input'
 import { FormTextAreaInput } from 'src/components/inputs/form-textArea-input'
 import { Notice } from 'src/components/misc/notice'
 import { POSSIBLE_GENRES, POSSIBLE_TRACK_LANGUAGE } from 'src/utils/constants'
-import { isValidUrl } from 'src/utils/functions'
+import { checkIfContainsSpecial, isValidUrl } from 'src/utils/functions'
 import { RegistrationDropDownSelect } from '../../components/registration-drop-down-select/registration-drop-down-select'
 import { RegistrationSubmitButton } from '../../components/registration-submit-button/registration-submit-button'
 import { TArtistAddTrackStage1, TArtistAddTrackStageFeat } from '../../types'
 import style from './style.module.css'
-
-const conditions = [`'`, `"`, '`']
 
 export const ArtistAddTrackStage1 = ({ formHook, onSubmit }: TArtistAddTrackStageFeat<TArtistAddTrackStage1>) => {
   const {
@@ -94,7 +92,7 @@ export const ArtistAddTrackStage1 = ({ formHook, onSubmit }: TArtistAddTrackStag
           rules={{
             required: haveTrack ? false : 'Required',
             validate: {
-              checkSymbols: (v: string) => (conditions.some((el) => v.includes(el)) ? 'Must not contain ‘ or ”' : true),
+              checkSymbols: (v: string) => checkIfContainsSpecial(v),
               checkLink: (v: string) => smartLinkCheck(v),
             },
           }}

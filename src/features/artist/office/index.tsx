@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router-dom'
 import { ArtistSideBar } from './components/sidebar'
 import style from './style.module.css'
-export default function ArtistOffice() {
+export default function ArtistOfficeFeature() {
   return (
     <div className={style.page}>
       <ArtistSideBar />
-      <div className={style.content}>
+      <div className={style.outlet}>
         <Outlet />
       </div>
     </div>

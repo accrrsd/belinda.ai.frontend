@@ -1,6 +1,10 @@
-import { FieldErrorsImpl } from 'react-hook-form'
+import { FieldErrorsImpl, get } from 'react-hook-form'
 
-export const checkError = (name: string, errors: FieldErrorsImpl) => (errors && errors[name] ? (errors[name]!.message as string) : false)
+export const checkError = (name: string, errors: FieldErrorsImpl) => {
+  const searchErrorRes = get(errors, name)
+  const { message } = searchErrorRes || {}
+  return message
+}
 
 export const isValidUrl = (str: string) => {
   const pattern = new RegExp(
@@ -15,12 +19,14 @@ export const isValidUrl = (str: string) => {
   return pattern.test(str)
 }
 
-export const getFinallyRules = (rules: object, additionalRules: object | undefined) => {
-  if (!additionalRules) return rules
-  if (!additionalRules.hasOwnProperty('validate') || !rules.hasOwnProperty('validate')) return { ...rules, additionalRules }
+export const checkUrl = (v: string) => (isValidUrl(v) ? true : 'Must be valid link')
+
+export const getFinallyValidateRules = (rules: object, validateRules: object | undefined) => {
+  if (!validateRules) return rules
+  if (!validateRules.hasOwnProperty('validate') || !rules.hasOwnProperty('validate')) return { ...rules, validateRules }
   //@ts-ignore:next-line
-  const validateRules = { ...rules.validate, ...additionalRules.validate }
-  return { ...rules, ...additionalRules, ...validateRules }
+  const concatValidateRules = { ...rules.validate, ...validateRules.validate }
+  return { ...rules, ...validateRules, ...concatValidateRules }
 }
 
 export const isObjectNotEmpty = (objectName: object) => {
@@ -41,8 +47,11 @@ export const createFormDataFromObject = (data: { [key: string]: any }): FormData
 export const splitArr = (arr: any[], chunks: number) => {
   const result = []
 
-  for (let i = 0; i < arr.length; i += chunks)
-    result.push(arr.slice(i, i + chunks));
+  for (let i = 0; i < arr.length; i += chunks) result.push(arr.slice(i, i + chunks))
 
- return result
+  return result
 }
+
+const conditionSpecial = [`'`, `"`, '`']
+
+export const checkIfContainsSpecial = (v: string) => (conditionSpecial.some((el) => v.includes(el)) ? 'Must not contain ‘ or ”' : true)
