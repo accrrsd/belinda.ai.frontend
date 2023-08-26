@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { EmptyContent } from 'src/features/artist/office/components/empty-content/empty-content'
+import { EmptyContent } from 'src/components/misc/empty-content'
 
 export const ArtistTracksFeature = () => {
   const [empty, setEmpty] = useState(true)
 
-  return empty ? <EmptyContent text="No added tracks yet. Add your first track" to="/artist/add-track" /> : <></>
+  return empty ? <EmptyContent message="No added tracks yet. Add your first track" to="/artist/add-track" /> : <></>
 }
