@@ -19,3 +19,12 @@ export const POSSIBLE_TRACK_LANGUAGE: TDropDownItem[] = [
   { label: 'English', value: 'English' },
   { label: 'Русский', value: 'Russian' },
 ]
+
+const conditions = [`'`, `"`, '`']
+
+export const defaultInputRules = {
+  required: 'Required',
+  validate: {
+    checkSymbols: (v: string) => (conditions.some((el) => v.includes(el)) ? 'Must not contain ‘ or ”' : true),
+  },
+}

@@ -7,8 +7,7 @@ export const CuratorAddPlaylistFeature = () => {
   const formHook = useForm<TDynamicallyPlaylists>({
     mode: 'all',
     defaultValues: {
-      //@ts-ignore:next-line
-      playlists: [{ link: '', cost: '' }],
+      playlists: [{ link: '', cost: NaN }],
     },
   })
 
@@ -16,7 +15,6 @@ export const CuratorAddPlaylistFeature = () => {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
     resetField,
     control,
   } = formHook
@@ -33,8 +31,7 @@ export const CuratorAddPlaylistFeature = () => {
 
       return (
         <AddPlaylistDynamically
-          {...{ register, errors, index, getValues, resetField, onAddClick, onRemoveClick }}
-          generalName="playlists"
+          {...{ register, errors, index, resetField, onAddClick, onRemoveClick }}
           linkName="link"
           costName="cost"
           key={field.id}

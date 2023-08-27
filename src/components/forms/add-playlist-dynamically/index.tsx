@@ -4,29 +4,29 @@ import { checkIfContainsSpecial, checkUrl } from 'src/utils/functions'
 import style from './style.module.css'
 
 import { useState } from 'react'
-import { FieldErrors, FieldValues, UseFormGetValues, UseFormRegister, UseFormResetField } from 'react-hook-form'
+import { FieldErrors, FieldValues, Path, UseFormRegister, UseFormResetField } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { ReactComponent as PlusCircle } from 'src/images/PlusCircle.svg'
 
+type playlistType = { link: string; cost: number }[]
+
 export type TDynamicallyPlaylists = {
-  playlists: { link: string; cost: number }[]
+  playlists: playlistType
 }
 
 type TAddPlaylistDynamically<T extends FieldValues> = {
-  generalName: keyof T
-  linkName: keyof T[keyof T][number]
-  costName: keyof T[keyof T][number]
+  linkName: keyof playlistType[number]
+  costName: keyof playlistType[number]
   index: number
+  denyButton?: boolean
   register: UseFormRegister<T>
   errors: FieldErrors<T>
   onAddClick?: () => void
   onRemoveClick?: (index: number) => void
-  getValues: UseFormGetValues<T>
   resetField: UseFormResetField<T>
 }
 
-export const AddPlaylistDynamically = ({
-  generalName,
+export const AddPlaylistDynamically = <T extends FieldValues = TDynamicallyPlaylists>({
   linkName,
   costName,
   index,
@@ -35,10 +35,10 @@ export const AddPlaylistDynamically = ({
   onAddClick,
   onRemoveClick,
   resetField,
-}: TAddPlaylistDynamically<TDynamicallyPlaylists>) => {
-  type TVariableName = `${typeof generalName}.${typeof index}.${typeof linkName | typeof costName}`
-  const linkInputName = `${generalName}.${index}.${linkName}` as TVariableName
-  const costInputName = `${generalName}.${index}.${costName}` as TVariableName
+  denyButton = true,
+}: TAddPlaylistDynamically<T>) => {
+  const linkInputName = `${'playlists'}.${index}.${linkName}` as Path<T>
+  const costInputName = `${'playlists'}.${index}.${costName}` as Path<T>
 
   // Не через getValues, потому что он ленивый и отрабатывает только между '' и значением (в случае цифры)
   const [linkValue, setLinkValue] = useState('')
@@ -52,6 +52,8 @@ export const AddPlaylistDynamically = ({
     if (checkValues()) {
       resetField(linkInputName)
       resetField(costInputName)
+      setLinkValue('')
+      setCostValue('')
     } else {
       if (onRemoveClick) onRemoveClick?.(index)
       else {
@@ -100,10 +102,10 @@ export const AddPlaylistDynamically = ({
 
       <button
         type="button"
-        className={`${style.contentButton} ${index === 0 && !checkValues() ? style.exitButton : style.clearButton}`}
+        className={`${style.contentButton} ${index === 0 && !checkValues() && denyButton ? style.exitButton : style.clearButton}`}
         onClick={handleClearButton}
       >
-        {checkValues() ? 'Clear' : index === 0 ? 'Deny' : 'Cancel'}
+        {checkValues() ? 'Clear' : index === 0 && denyButton ? 'Deny' : 'Cancel'}
       </button>
 
       {onAddClick && (

@@ -24,7 +24,7 @@
 .titleWrapper {
   display: flex;
   justify-content: space-between;
-  font-family: 'Inter';
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 600;
   align-items: center;

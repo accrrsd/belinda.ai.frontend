@@ -1,4 +1,5 @@
 import { FieldErrors, FieldValues, Path, UseFormRegister } from 'react-hook-form'
+import { defaultInputRules } from 'src/utils/constants'
 import { checkError, getFinallyValidateRules } from '../../../utils/functions'
 import style from './form-text-input.module.css'
 
@@ -12,20 +13,11 @@ type TFormTextInput<T extends FieldValues> = {
   subtitle?: string
 } & React.HTMLProps<HTMLInputElement>
 
-const conditions = [`'`, `"`, '`']
-
-const defaultRules = {
-  required: 'Required',
-  validate: {
-    checkSymbols: (v: string) => (conditions.some((el) => v.includes(el)) ? 'Must not contain ‘ or ”' : true),
-  },
-}
-
 export const FormTextInput = <T extends FieldValues>({
   register,
   inputName,
   errors,
-  rules = defaultRules,
+  rules = defaultInputRules,
   validateRules,
   title,
   subtitle,
