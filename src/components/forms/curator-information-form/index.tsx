@@ -4,6 +4,7 @@ import { useFieldArray, useForm } from 'react-hook-form'
 import { FormTextInput } from 'src/components/inputs/form-text-input'
 import { IconButton } from 'src/components/inputs/icon-button'
 import { IconTextInput } from 'src/components/inputs/icon-text-input'
+import { SubmitButton } from 'src/components/inputs/submit-button'
 import { ReactComponent as FacebookIcon } from 'src/images/facebookIcon.svg'
 import { ReactComponent as InstagramIcon } from 'src/images/instagramIcon.svg'
 import { ReactComponent as TikTokIcon } from 'src/images/tikTokIcon.svg'
@@ -177,7 +178,8 @@ export const CuratorInformationForm = () => {
         <div className={style.iconsContainer}>{createButtons()}</div>
       </div>
 
-      <div className={style.socialInputsWrapper}>{createSocials()}</div>
+      <div className={`${style.socialInputsWrapper} ${socialFields.length > 0 ? style.socialInputsWrapperMargin : ''}`}>{createSocials()}</div>
+      <SubmitButton children="Continue" additionalStyle={style.submitText} />
     </form>
   )
 }
