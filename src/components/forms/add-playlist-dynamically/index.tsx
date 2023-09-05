@@ -22,7 +22,7 @@ type TAddPlaylistDynamically<T extends FieldValues> = {
   register: UseFormRegister<T>
   errors: FieldErrors<T>
   onAddClick?: () => void
-  onRemoveClick?: (index: number) => void
+  onRemoveClick?: ((index: number) => void) | string
   resetField: UseFormResetField<T>
 }
 
@@ -55,9 +55,10 @@ export const AddPlaylistDynamically = <T extends FieldValues = TDynamicallyPlayl
       setLinkValue('')
       setCostValue('')
     } else {
-      if (onRemoveClick) onRemoveClick?.(index)
-      else {
-        navigate('/curator')
+      if (typeof onRemoveClick === 'string') {
+        navigate(onRemoveClick)
+      } else {
+        onRemoveClick?.(index)
       }
     }
   }

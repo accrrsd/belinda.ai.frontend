@@ -6,7 +6,7 @@ export const CuratorInformationFeature = () => {
     <div className={style.wrapper}>
       <div className={style.content}>
         <h2 className={style.title}>User's Information</h2>
-        <CuratorInformationForm />
+        <CuratorInformationForm playlistsSettings={{ redirectOnRemoveFirst: '/curator', denyButton: true }} />
       </div>
     </div>
   )

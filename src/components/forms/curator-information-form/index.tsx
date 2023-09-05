@@ -26,7 +26,16 @@ type TCuratorInfoForm = {
   origin: string
 }
 
-export const CuratorInformationForm = () => {
+type TPlaylistsSettings = {
+  redirectOnRemoveFirst?: string
+  denyButton?: true
+}
+
+type TCuratorInformationFormComp = {
+  playlistsSettings?: TPlaylistsSettings
+}
+
+export const CuratorInformationForm = ({ playlistsSettings }: TCuratorInformationFormComp) => {
   const [socialButtons, setSocialButtons] = useState<possibleSocialNames[]>(['facebook', 'instagram', 'tikTok'])
 
   const formHook = useForm<TCuratorInfoForm>({
@@ -88,12 +97,13 @@ export const CuratorInformationForm = () => {
   const createPlaylists = () =>
     playlistsFields.map((field, index) => {
       const onAddClick = index === playlistsFields.length - 1 ? handleAppendPlaylist : undefined
-      const onRemoveClick = index !== 0 ? handleRemovePlaylist : undefined
+      const onRemoveClick = index !== 0 ? handleRemovePlaylist : playlistsSettings?.redirectOnRemoveFirst
+      const checkDenyButton = index === 0 && playlistsSettings?.denyButton
 
       return (
         <AddPlaylistDynamically<TCuratorInfoForm>
           {...{ register, errors, index, resetField, onAddClick, onRemoveClick }}
-          denyButton={false}
+          denyButton={checkDenyButton}
           linkName="link"
           costName="cost"
           key={field.id}
