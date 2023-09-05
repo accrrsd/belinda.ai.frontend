@@ -8,6 +8,8 @@ import { SubmitButton } from 'src/components/inputs/submit-button'
 import { ReactComponent as FacebookIcon } from 'src/images/facebookIcon.svg'
 import { ReactComponent as InstagramIcon } from 'src/images/instagramIcon.svg'
 import { ReactComponent as TikTokIcon } from 'src/images/tikTokIcon.svg'
+import { ReactComponent as TwitterIcon } from 'src/images/twitterIcon.svg'
+import { ReactComponent as YoutubeIcon } from 'src/images/youtubeIcon.svg'
 import { EmailRegExp } from 'src/utils/constants'
 import { checkIfContainsSpecial, checkUrl } from 'src/utils/functions'
 import { v4 } from 'uuid'
@@ -36,7 +38,7 @@ type TCuratorInformationFormComp = {
 }
 
 export const CuratorInformationForm = ({ playlistsSettings }: TCuratorInformationFormComp) => {
-  const [socialButtons, setSocialButtons] = useState<possibleSocialNames[]>(['facebook', 'instagram', 'tikTok'])
+  const [socialButtons, setSocialButtons] = useState<possibleSocialNames[]>(['tikTok', 'twitter', 'youtube', 'instagram', 'facebook'])
 
   const formHook = useForm<TCuratorInfoForm>({
     mode: 'all',
@@ -84,11 +86,11 @@ export const CuratorInformationForm = ({ playlistsSettings }: TCuratorInformatio
       case 'instagram':
         return <InstagramIcon />
       case 'youtube':
-        return <></>
+        return <YoutubeIcon />
       case 'facebook':
         return <FacebookIcon />
       case 'twitter':
-        return <></>
+        return <TwitterIcon />
       case 'tikTok':
         return <TikTokIcon />
     }
