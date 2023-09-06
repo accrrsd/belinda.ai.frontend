@@ -21,7 +21,7 @@ export default function ArtistRegistrationFeature() {
           <span className={style.title}>Registration Form</span>
         </div>
         <div className={style.wrapper}>
-          <ArtistInformationForm formHook={formHook} onSubmit={(d: TArtistInformation) => onSubmit(d)} />
+          <ArtistInformationForm formHook={formHook} onSubmit={(d: TArtistInformation) => onSubmit(d)} passwordField />
         </div>
       </div>
     </div>

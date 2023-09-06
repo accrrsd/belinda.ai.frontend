@@ -1,6 +1,6 @@
 import { AsYouType, isValidPhoneNumber } from 'libphonenumber-js'
 import { useState } from 'react'
-import { useFieldArray, useForm } from 'react-hook-form'
+import { FieldValues, useFieldArray } from 'react-hook-form'
 import { FormTextInput } from 'src/components/inputs/form-text-input'
 import { IconButton } from 'src/components/inputs/icon-button'
 import { IconTextInput } from 'src/components/inputs/icon-text-input'
@@ -11,19 +11,21 @@ import { ReactComponent as TikTokIcon } from 'src/images/tikTokIcon.svg'
 import { ReactComponent as TwitterIcon } from 'src/images/twitterIcon.svg'
 import { ReactComponent as YoutubeIcon } from 'src/images/youtubeIcon.svg'
 import { EmailRegExp } from 'src/utils/constants'
-import { checkIfContainsSpecial, checkUrl } from 'src/utils/functions'
+import { checkIfContainsSpecial, checkPassword, checkUrl } from 'src/utils/functions'
+import { TSimpleForm } from 'src/utils/types'
 import { v4 } from 'uuid'
 import { AddPlaylistDynamically } from '../add-playlist-dynamically'
 import style from './style.module.css'
 
 type possibleSocialNames = 'instagram' | 'youtube' | 'facebook' | 'twitter' | 'tikTok'
 
-type TCuratorInfoForm = {
+export type TCuratorInfoForm = {
   playlists: { link: string; cost: number }[]
   socialLinks: { name: possibleSocialNames; link: string }[]
 
   name: string
   email: string
+  password: string
   phone?: string
   origin: string
 }
@@ -33,19 +35,15 @@ type TPlaylistsSettings = {
   denyButton?: true
 }
 
-type TCuratorInformationFormComp = {
+type TAdditionalProps = {
   playlistsSettings?: TPlaylistsSettings
+  passwordField?: true
 }
 
-export const CuratorInformationForm = ({ playlistsSettings }: TCuratorInformationFormComp) => {
-  const [socialButtons, setSocialButtons] = useState<possibleSocialNames[]>(['tikTok', 'twitter', 'youtube', 'instagram', 'facebook'])
+type TStage<T extends FieldValues> = TSimpleForm<T> & TAdditionalProps
 
-  const formHook = useForm<TCuratorInfoForm>({
-    mode: 'all',
-    defaultValues: {
-      playlists: [{ link: '', cost: NaN }],
-    },
-  })
+export const CuratorInformationForm = ({ formHook, onSubmit, playlistsSettings, passwordField }: TStage<TCuratorInfoForm>) => {
+  const [socialButtons, setSocialButtons] = useState<possibleSocialNames[]>(['instagram', 'facebook', 'tikTok', 'youtube', 'twitter'])
 
   const {
     register,
@@ -59,10 +57,6 @@ export const CuratorInformationForm = ({ playlistsSettings }: TCuratorInformatio
   const { fields: playlistsFields, append: appendPlaylist, remove: removePlaylist } = useFieldArray({ control, name: 'playlists' })
 
   const { fields: socialFields, append: appendSocial, remove: removeSocial } = useFieldArray({ control, name: 'socialLinks' })
-
-  const onSubmit = (data: any) => {
-    console.log(data)
-  }
 
   const appendButton = (name: possibleSocialNames) => setSocialButtons((prev) => [...prev, name])
 
@@ -152,7 +146,7 @@ export const CuratorInformationForm = ({ playlistsSettings }: TCuratorInformatio
         <FormTextInput title="Your Name" placeholder="David" inputName="name" {...{ register, errors }} />
 
         <FormTextInput
-          title="Your Email Address"
+          title="Your Email Address (and Login)"
           placeholder="For example, dmicofficial@gmail.com"
           inputName="email"
           {...{ register, errors }}
@@ -162,6 +156,20 @@ export const CuratorInformationForm = ({ playlistsSettings }: TCuratorInformatio
             },
           }}
         />
+
+        {passwordField && (
+          <FormTextInput
+            title="Password"
+            placeholder="*****"
+            inputName="password"
+            {...{ register, errors }}
+            validateRules={{
+              validate: {
+                checkPassword,
+              },
+            }}
+          />
+        )}
 
         <FormTextInput
           title="Your Phone Number"

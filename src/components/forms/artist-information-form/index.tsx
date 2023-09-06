@@ -1,24 +1,28 @@
 import { AsYouType, isValidPhoneNumber } from 'libphonenumber-js'
-import { FieldValues, UseFormReturn } from 'react-hook-form'
+import { FieldValues } from 'react-hook-form'
+import { checkPassword } from 'src/utils/functions'
+import { TSimpleForm } from 'src/utils/types'
 import { EmailRegExp } from '../../../utils/constants'
 import { FormTextInput } from '../../inputs/form-text-input'
 import { SubmitButton } from '../../inputs/submit-button'
 import style from './style.module.css'
 
-type TStage<T extends FieldValues> = {
-  formHook: UseFormReturn<T, any>
-  onSubmit: (data: T) => void
-}
-
 export type TArtistInformation = {
   name: string
   email: string
+  password: string
   phone?: string
   artistName: string
   origin: string
 }
 
-export const ArtistInformationForm = ({ formHook, onSubmit }: TStage<TArtistInformation>) => {
+type TAdditionalProps = {
+  passwordField?: true
+}
+
+type TStage<T extends FieldValues> = TSimpleForm<T> & TAdditionalProps
+
+export const ArtistInformationForm = ({ formHook, onSubmit, passwordField }: TStage<TArtistInformation>) => {
   const {
     register,
     handleSubmit,
@@ -31,7 +35,7 @@ export const ArtistInformationForm = ({ formHook, onSubmit }: TStage<TArtistInfo
       <FormTextInput title="Your Name" placeholder="David" inputName="name" {...{ register, errors }} />
 
       <FormTextInput
-        title="Your Email Address"
+        title="Your Email Address (and Login)"
         placeholder="For example, dmicofficial@gmail.com"
         inputName="email"
         {...{ register, errors }}
@@ -41,6 +45,20 @@ export const ArtistInformationForm = ({ formHook, onSubmit }: TStage<TArtistInfo
           },
         }}
       />
+
+      {passwordField && (
+        <FormTextInput
+          title="Password"
+          placeholder="*****"
+          inputName="password"
+          {...{ register, errors }}
+          validateRules={{
+            validate: {
+              checkPassword,
+            },
+          }}
+        />
+      )}
 
       <FormTextInput
         title="Your Phone Number"

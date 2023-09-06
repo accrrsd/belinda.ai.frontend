@@ -20,11 +20,13 @@ export const POSSIBLE_TRACK_LANGUAGE: TDropDownItem[] = [
   { label: 'Русский', value: 'Russian' },
 ]
 
-const conditions = [`'`, `"`, '`']
+export const conditionSpecial = [`'`, `"`, '`']
+// eslint-disable-next-line
+export const passwordSpecialCharsReg = /[!@#$%^&*()_+\-=\[\]{};:\\|,.<>\/?~]/
 
 export const defaultInputRules = {
   required: 'Required',
   validate: {
-    checkSymbols: (v: string) => (conditions.some((el) => v.includes(el)) ? 'Must not contain ‘ or ”' : true),
+    checkSymbols: (v: string) => (conditionSpecial.some((el) => v.includes(el)) ? 'Must not contain ‘ or ”' : true),
   },
 }

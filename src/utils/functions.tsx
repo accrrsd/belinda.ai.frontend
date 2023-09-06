@@ -1,4 +1,5 @@
 import { FieldErrorsImpl, get } from 'react-hook-form'
+import { conditionSpecial, passwordSpecialCharsReg } from './constants'
 
 export const checkError = (name: string, errors: FieldErrorsImpl) => {
   const searchErrorRes = get(errors, name)
@@ -25,7 +26,7 @@ export const getFinallyValidateRules = (rules: object, validateRules: object | u
   if (!validateRules) return rules
   if (!validateRules.hasOwnProperty('validate') || !rules.hasOwnProperty('validate')) return { ...rules, validateRules }
   //@ts-ignore:next-line
-  const concatValidateRules = { ...rules.validate, ...validateRules.validate }
+  const concatValidateRules = { validate: { ...rules.validate, ...validateRules.validate } }
   return { ...rules, ...validateRules, ...concatValidateRules }
 }
 
@@ -52,6 +53,25 @@ export const splitArr = (arr: any[], chunks: number) => {
   return result
 }
 
-const conditionSpecial = [`'`, `"`, '`']
-
 export const checkIfContainsSpecial = (v: string) => (conditionSpecial.some((el) => v.includes(el)) ? 'Must not contain ‘ or ”' : true)
+
+export const checkPassword = (v: string) => {
+  // Обычно true это валидация прошла, а строка является ошибкой, но тут это кастомная проверка
+  const capitalized = Array.from(v).some((char) => char === char.toUpperCase() && char !== char.toLowerCase()) ? false : 'capital letter'
+  const number = Array.from(v).some((char) => !Number.isNaN(parseInt(char))) ? false : 'number'
+  const special = passwordSpecialCharsReg.test(v) ? false : 'special sign'
+  const neededLength = v.length >= 5 ? false : '5 characters'
+
+  const errors: (string | false)[] = [capitalized, number, special, neededLength]
+
+  let errorString = 'Password may contains: '
+
+  errors.forEach((err, index) => {
+    if (err === false) return
+    const lastIndex = errors.findLastIndex((v) => v !== false)
+    const last = lastIndex === index
+    errorString += `${err}${last ? '' : ', '}`
+  })
+
+  return !capitalized && !number && !special && !neededLength ? true : errorString
+}
